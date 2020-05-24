@@ -24,6 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    // Enables data binding.
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
 }
 
@@ -49,5 +57,7 @@ dependencies {
     //material
     implementation "com.google.android.material:material:$materialVersion"
 
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
