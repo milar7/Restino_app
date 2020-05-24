@@ -11,6 +11,9 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.my_toolbar))
+        val actionBar= supportActionBar
+        actionBar?.title=""
+
     }
 
 

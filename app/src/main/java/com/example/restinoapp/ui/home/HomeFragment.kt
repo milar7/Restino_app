@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = this
+        setupSlideshow()
         return binding.root
     }
 
@@ -39,7 +40,6 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
 
-        setupSlideshow()
 
     }
 
