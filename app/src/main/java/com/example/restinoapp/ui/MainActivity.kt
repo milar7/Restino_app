@@ -2,7 +2,10 @@ package com.example.restinoapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.restinoapp.R
+import com.example.restinoapp.ui.home.HomeFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -14,6 +17,13 @@ class MainActivity : BaseActivity() {
         val actionBar= supportActionBar
         actionBar?.title=""
 
+        btn_sign_in_home.setOnClickListener {
+
+            Navigation.findNavController(this,R.id.nav_host_fragment).navigate(
+                HomeFragmentDirections.actionHomeFragmentToLoginFragment()
+            )
+
+        }
     }
 
 

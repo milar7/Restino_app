@@ -77,13 +77,13 @@
                 android:text="ورود" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signup_button"
+                android:id="@+id/signup_button_login"
                 style="@style/Widget.Shrine.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="کاربر جدید هستید؟" />
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/homeـbutton"
+                android:id="@+id/home_button_login"
                 style="@style/Widget.Shrine.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

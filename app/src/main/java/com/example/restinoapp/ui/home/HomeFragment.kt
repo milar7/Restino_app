@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -31,7 +32,8 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = this
-        setupSlideshow()
+        (activity as AppCompatActivity).supportActionBar?.show()
+
         return binding.root
     }
 
@@ -39,15 +41,18 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
+        setupSlideshow()
 
 
     }
 
     private fun setupSlideshow() {
-
-        slides.add(Slide(R.drawable.slide1))
-        slides.add(Slide(R.drawable.slide2))
-        slides.add(Slide(R.drawable.slide3))
+        //TODO it shouln't call every time!!!
+        if (slides.isEmpty()) {
+            slides.add(Slide(R.drawable.slide1))
+            slides.add(Slide(R.drawable.slide2))
+            slides.add(Slide(R.drawable.slide3))
+        }
         slideAdapter = SlideShowPagerAdapter(this!!.context!!, slides)
         binding.vPager.adapter = slideAdapter
         binding.vPager.currentItem=0
