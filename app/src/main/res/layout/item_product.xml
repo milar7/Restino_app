@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="250dp"
+    android:layout_margin="16dp"
+    android:padding="8dp"
+    android:layout_gravity="center_horizontal"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            tools:src="@drawable/product1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ریف محلول ضدعفونی کننده سطوح ۴ لیتر"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="۲۵۰۰۰۰ ریال"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مشاهده و خرید"
+            android:layout_gravity="center_horizontal|bottom"
+            style="@style/Widget.Shrine.Button"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>

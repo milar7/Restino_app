@@ -34,6 +34,16 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
         // TODO: Use the ViewModel
+
+        binding.btnSubmitLogin.setOnClickListener {
+
+
+
+
+
+        }
+
+
         binding.homeButtonLogin.setOnClickListener {
             findNavController().navigate(
                 LoginFragmentDirections.actionLoginFragmentToHomeFragment()
