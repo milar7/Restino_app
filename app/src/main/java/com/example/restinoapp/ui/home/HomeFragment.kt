@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupSlideshow() {
-        //TODO it shouln't call every time!!!
         if (slides.isEmpty()) {
             slides.add(Slide(R.drawable.slide1))
             slides.add(Slide(R.drawable.slide2))
