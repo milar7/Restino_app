@@ -1,85 +1,1 @@
-package com.example.restinoapp.ui.home
-
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
-import com.example.restinoapp.R
-import com.example.restinoapp.databinding.FragmentHomeBinding
-import com.example.restinoapp.ui.home.slideshow.Slide
-import com.example.restinoapp.ui.home.slideshow.SlideShowPagerAdapter
-import java.util.*
-
-class HomeFragment : Fragment() {
-
-
-    private lateinit var viewModel: HomeViewModel
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var slideAdapter: SlideShowPagerAdapter
-
-    companion object {
-        val slides = mutableListOf<Slide>()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        binding.lifecycleOwner = this
-        (activity as AppCompatActivity).supportActionBar?.show()
-
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
-        setupSlideshow()
-
-
-    }
-
-    private fun setupSlideshow() {
-        if (slides.isEmpty()) {
-            slides.add(Slide(R.drawable.slide1))
-            slides.add(Slide(R.drawable.slide2))
-            slides.add(Slide(R.drawable.slide3))
-        }
-        slideAdapter = SlideShowPagerAdapter(this!!.context!!, slides)
-        binding.vPager.adapter = slideAdapter
-        binding.vPager.currentItem=0
-
-
-
-        binding.tabIndicator.setupWithViewPager(binding.vPager, true)
-        val timer = Timer()
-        timer.scheduleAtFixedRate(SliderTimer(), 4000, 6000)
-    }
-
-    inner class SliderTimer : TimerTask() {
-        override fun run() {
-
-            activity?.runOnUiThread(object : Runnable {
-                override fun run() {
-                    if (binding.vPager.currentItem < HomeFragment.slides.size - 1) {
-                        binding.vPager.currentItem = binding.vPager.currentItem + 1
-                    } else {
-                        binding.vPager.currentItem = 0
-                    }
-                }
-
-            })
-        }
-
-
-    }
-
-}
-
+package com.example.restinoapp.ui.homeimport android.os.Bundleimport android.view.LayoutInflaterimport android.view.Viewimport android.view.ViewGroupimport android.widget.LinearLayoutimport androidx.appcompat.app.AppCompatActivityimport androidx.databinding.DataBindingUtilimport androidx.fragment.app.Fragmentimport androidx.lifecycle.ViewModelProvidersimport androidx.recyclerview.widget.LinearLayoutManagerimport androidx.viewpager.widget.ViewPagerimport com.example.restinoapp.Rimport com.example.restinoapp.data.model.Productimport com.example.restinoapp.databinding.FragmentHomeBindingimport com.example.restinoapp.ui.home.list.ProductRvAdapterimport com.example.restinoapp.ui.home.slideshow.Slideimport com.example.restinoapp.ui.home.slideshow.SlideShowPagerAdapterimport com.example.restinoapp.util.toastimport java.util.*class HomeFragment : Fragment(), ProductRvAdapter.Interaction {    private lateinit var viewModel: HomeViewModel    private lateinit var binding: FragmentHomeBinding    private lateinit var slideAdapter: SlideShowPagerAdapter    private lateinit var productRvAdapter:ProductRvAdapter    companion object {        val slides = mutableListOf<Slide>()    }    val products= mutableListOf<Product>()    override fun onCreateView(        inflater: LayoutInflater, container: ViewGroup?,        savedInstanceState: Bundle?    ): View? {        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)        binding.lifecycleOwner = this        (activity as AppCompatActivity).supportActionBar?.show()        if (products.isEmpty()){            products.add(Product(name = "name1",image = R.drawable.product1,inventory = 1,price = 22.5F))            products.add(Product(name = "name2",image = R.drawable.product1,inventory = 1,price = 22.5F))            products.add(Product(name = "name3",image = R.drawable.product1,inventory = 1,price = 22.5F))            products.add(Product(name = "name4",image = R.drawable.product1,inventory = 1,price = 22.5F))            products.add(Product(name = "name5",image = R.drawable.product1,inventory = 1,price = 22.5F))            products.add(Product(name = "name6",image = R.drawable.product1,inventory = 1,price = 22.5F))        }        return binding.root    }    override fun onActivityCreated(savedInstanceState: Bundle?) {        super.onActivityCreated(savedInstanceState)        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)        // TODO: Use the ViewModel        setupSlideshow()        initRecyclerView()    }    private fun initRecyclerView() {        binding.recyclerViewHome.apply {            layoutManager=LinearLayoutManager(activity)            productRvAdapter = ProductRvAdapter(this@HomeFragment)            adapter=productRvAdapter        }        productRvAdapter.submitList(products)    }    override fun onItemSelected(position: Int, item: Product) {        toast(item.name)    }    private fun setupSlideshow() {        if (slides.isEmpty()) {            slides.add(Slide(R.drawable.slide1))            slides.add(Slide(R.drawable.slide2))            slides.add(Slide(R.drawable.slide3))        }        slideAdapter = SlideShowPagerAdapter(this!!.context!!, slides)        binding.vPager.adapter = slideAdapter        binding.vPager.currentItem=0        binding.tabIndicator.setupWithViewPager(binding.vPager, true)        val timer = Timer()        timer.scheduleAtFixedRate(SliderTimer(), 4000, 6000)    }    inner class SliderTimer : TimerTask() {        override fun run() {            activity?.runOnUiThread(object : Runnable {                override fun run() {                    if (binding.vPager.currentItem < HomeFragment.slides.size - 1) {                        binding.vPager.currentItem = binding.vPager.currentItem + 1                    } else {                        binding.vPager.currentItem = 0                    }                }            })        }    }}

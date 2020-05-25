@@ -5,12 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.restinoapp.R
 import com.example.restinoapp.databinding.FragmentSignUpBinding
 import com.example.restinoapp.util.isValidPassword
+import com.example.restinoapp.util.toast
 
 
 class SignUpFragment : Fragment() {
@@ -91,7 +93,7 @@ class SignUpFragment : Fragment() {
 
 
             if (!binding.etPasswordSignup.text.toString().isEmpty()) {
-                if (binding.etPasswordSignup.text.toString().trim().length <8 || !binding.etPasswordSignup.text.toString().isValidPassword())
+                if ( !binding.etPasswordSignup.text.toString().trim().isValidPassword())
                 {
                     binding.layPasswordSignup.error = "رمز عبور باید حداقل ۸ کاراکتر و شامل  یک حرف بزرگ و یک عدد باشد"
                     return@setOnClickListener
@@ -122,13 +124,7 @@ class SignUpFragment : Fragment() {
             }
 
 
-
-//            if (binding.etPhoneNumSignup.text.toString().isEmpty()){
-//                binding.layPhoneNumSignup.error="شماره موبایل رو وارد کنید"
-//                return@setOnClickListener
-//            }else{
-//                binding.layPhoneNumSignup.isErrorEnabled=false
-//            }
+            toast("اطلاعات صحیح است")
 
 
         }

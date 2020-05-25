@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/img_product"
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:scaleType="fitXY"
@@ -20,6 +21,7 @@
             tools:src="@drawable/product1"/>
 
             <TextView
+                android:id="@+id/title_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ریف محلول ضدعفونی کننده سطوح ۴ لیتر"
@@ -28,7 +30,7 @@
                 />
 
         <TextView
-
+            android:id="@+id/img_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="۲۵۰۰۰۰ ریال"
@@ -37,6 +39,7 @@
             />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_product"
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
