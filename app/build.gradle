@@ -40,9 +40,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'androidx.fragment:fragment-ktx:1.2.0-beta02'
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
@@ -54,8 +52,8 @@ dependencies {
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.0-alpha01"
     implementation "androidx.navigation:navigation-ui-ktx:2.2.0-alpha01"
-    //material
-    implementation "com.google.android.material:material:$materialVersion"
+    //New Material Design
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
 
 
     implementation 'com.squareup.picasso:picasso:2.71828'
